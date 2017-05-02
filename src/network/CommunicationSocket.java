@@ -50,7 +50,7 @@ public class CommunicationSocket extends Thread{
                     Controller.getController().addInfo(receveid.getSrcPseudo(), "Début de réception du fichier : " + receveid.getData());
                     Message received2 = (Message)reader.readObject();
                     int length = Integer.parseInt(received2.getData());
-                    OutputStream receivedFile = new FileOutputStream(System.getProperty("user.home") + "/Downloads/" + receveid.getData());
+                    OutputStream receivedFile = new FileOutputStream(System.getProperty("user.home") + "/" + receveid.getData());
                     InputStream in = socketClient.getInputStream();
                     byte[] bytes = new byte[16*1024];
                     int cptSize = 0;
@@ -60,7 +60,7 @@ public class CommunicationSocket extends Thread{
                         cptSize += count;
                     }
                     receivedFile.close();
-                    Controller.getController().addInfo(receveid.getSrcPseudo(), "Fichier reçu : " + System.getProperty("user.home") + "/Downloads/" + receveid.getData());
+                    Controller.getController().addInfo(receveid.getSrcPseudo(), "Fichier reçu : " + System.getProperty("user.home") + "/" + receveid.getData());
                 } else {
                     Controller.getController().deliverMessage(receveid);
                 }

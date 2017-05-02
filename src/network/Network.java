@@ -1,6 +1,8 @@
 package network;
 
 import controller.Controller;
+import view.Audio;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -72,7 +74,7 @@ public class Network extends Thread{
                     userNSocket.remove(controlMessage1.getUserName());
                     userNSocket.put(controlMessage1.getUserName(), newComSock);
                     Controller.getController().addUser(controlMessage1.getUserName(), controlMessage1.getUserAdresse());
-                } else if (controlMessage1.getData().equals("socket_created")) {
+                } else if (controlMessage1.getData().equals("socket_created") && (!userNSocket.containsKey(controlMessage1.getUserName()))) {
                         int newPortForReceive = portNum + cptSockect;
                         cptSockect++;
                         CommunicationSocket newComSock = new CommunicationSocket(controlMessage1.getUserAdresse(), controlMessage1.getPort(), 2);
@@ -83,10 +85,14 @@ public class Network extends Thread{
                         DatagramPacket packet = new DatagramPacket(data, data.length, controlMessage1.getUserAdresse(), portNum);
                         socket_envoi.send(packet);
                         Controller.getController().addUser(controlMessage1.getUserName(), controlMessage1.getUserAdresse());
+                        Audio audio = new Audio(Audio.typeAudio.CO);
+                        audio.start();
                 } else if(controlMessage1.getData().equals("bye")) {
                     userNSocket.get(controlMessage1.getUserName()).closeSocket();
                     userNSocket.remove(controlMessage1.getUserName());
                     Controller.getController().removeUser(controlMessage1.getUserName());
+                    Audio audio = new Audio(Audio.typeAudio.DECO);
+                    audio.start();
                 }
             }
         } catch (Exception e) {

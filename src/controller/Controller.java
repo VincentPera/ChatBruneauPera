@@ -78,6 +78,8 @@ public class Controller implements Facade{
 
     public void deliverMessage(network.Message msg) {
         userChat.get(msg.getSrcPseudo()).addMessage(msg.getData(), msg.getSrcPseudo());
+        Audio audio = new Audio(Audio.typeAudio.RECEP);
+        audio.start();
     }
 
     @Override
@@ -87,6 +89,8 @@ public class Controller implements Facade{
                 contact = (Contacts) Fenetre.createGui(Fenetre.TypeFenetre.CONTACTS);
                 network = new Network();
                 login.setVisible(false);
+                Audio audio = new Audio(Audio.typeAudio.RECEP);
+                audio.start();
             }
         } catch (UnknownHostException e) {
             e.printStackTrace();
