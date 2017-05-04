@@ -74,6 +74,8 @@ public class Network extends Thread{
                     userNSocket.remove(controlMessage1.getUserName());
                     userNSocket.put(controlMessage1.getUserName(), newComSock);
                     Controller.getController().addUser(controlMessage1.getUserName(), controlMessage1.getUserAdresse());
+                    Audio audio = new Audio(Audio.typeAudio.CO);
+                    audio.start();
                 } else if (controlMessage1.getData().equals("socket_created") && (!userNSocket.containsKey(controlMessage1.getUserName()))) {
                         int newPortForReceive = portNum + cptSockect;
                         cptSockect++;

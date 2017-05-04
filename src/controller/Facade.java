@@ -4,6 +4,7 @@ import network.Message;
 
 import java.io.File;
 import java.net.InetAddress;
+import java.net.URISyntaxException;
 
 public interface Facade {
 
@@ -32,14 +33,14 @@ public interface Facade {
      * Print the selected message in the gui or as text
      * @param msg the message to be print
      */
-    void deliverMessage(network.Message msg);
+    void deliverMessage(network.Message msg) throws URISyntaxException;
 
     /**
      * Connect the user of the app, launch the network as well,
      * USED WHEN YOU CLICK ON LOGIN on the first window
      * @param pseudo the name of the main user
      */
-    void connect(String pseudo);
+    void connect(String pseudo) throws URISyntaxException;
 
     /**
      * Add the user to the list of existing user

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.net.Inet4Address;
+import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
 public class Message extends Fenetre {
@@ -170,14 +171,22 @@ public class Message extends Fenetre {
 
     }
 
-    public void addMessage(String data, String source) {
+    public void addMessage(String data, String source) throws URISyntaxException {
         discussion.append(source + " : " + data + "\n");
+        if(getClosed()){
+            Audio audio = new Audio(Audio.typeAudio.RECEP);
+            audio.start();
+        }
         discussion.revalidate();
     }
 
     public void closeConv(){
         discussion.append("ChatSystem : l'utilisateur est déconnecté.\n");
         discussion.revalidate();
+    }
+
+    public boolean getClosed(){
+        return !this.isVisible();
     }
 
 }

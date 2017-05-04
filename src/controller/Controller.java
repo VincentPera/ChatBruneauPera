@@ -8,6 +8,7 @@ import view.Message;
 import java.io.File;
 import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
@@ -76,20 +77,18 @@ public class Controller implements Facade{
         return model.getUtilActu().getPseudo();
     }
 
-    public void deliverMessage(network.Message msg) {
+    public void deliverMessage(network.Message msg) throws URISyntaxException {
         userChat.get(msg.getSrcPseudo()).addMessage(msg.getData(), msg.getSrcPseudo());
-        Audio audio = new Audio(Audio.typeAudio.RECEP);
-        audio.start();
     }
 
     @Override
-    public void connect(String pseudo) {
+    public void connect(String pseudo) throws URISyntaxException {
         try {
             if (model.connection(pseudo, Inet4Address.getLocalHost())) {
                 contact = (Contacts) Fenetre.createGui(Fenetre.TypeFenetre.CONTACTS);
                 network = new Network();
                 login.setVisible(false);
-                Audio audio = new Audio(Audio.typeAudio.RECEP);
+                Audio audio = new Audio(Audio.typeAudio.CO);
                 audio.start();
             }
         } catch (UnknownHostException e) {
@@ -97,7 +96,7 @@ public class Controller implements Facade{
         }
     }
 
-    public void addInfo(String dest, String Message) {
+    public void addInfo(String dest, String Message) throws URISyntaxException {
         userChat.get(dest).addMessage(Message, "ChatSystem");
     }
 
