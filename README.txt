@@ -5,7 +5,7 @@ Version JAVA
 La version JAVA de ce projet est la version 8.
 
 ===========================================================================
-Compiler NOTRE PROJEEEEEET 
+Compiler notre projet
 ===========================================================================
 
 Vous pouvez importer notre projet sous Eclipse ou Intellij afin de le compiler et lancer le main de controller.java
