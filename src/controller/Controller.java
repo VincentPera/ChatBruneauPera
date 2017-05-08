@@ -30,6 +30,10 @@ public class Controller implements Facade{
         login = Fenetre.createGui(Fenetre.TypeFenetre.LOGIN);
     }
 
+    public HashMap<String, PanelUserContact> getUserPan(){
+        return userPan;
+    }
+
     public static Controller getController() {
         return c;
     }

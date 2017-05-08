@@ -23,6 +23,10 @@ public class PanelUserContact extends JPanel{
         initComponents();
     }
 
+    public Message getMsgView(){
+        return msgView;
+    }
+
     private void initComponents() {
         this.setLayout(new GridLayout(1, 2));
         this.setOpaque(true);

@@ -2,9 +2,11 @@ package controller;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
+
 import java.net.InetAddress;
+
 import static network.Message.DataType.Text;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 //JUNIT 4
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -37,7 +39,7 @@ public class ControllerTest {
         network.Message m = new network.Message(Text, "coucou", dest, nameUser);
         controller.deliverMessage(m);
         Thread.sleep(500);
-        controller.userPan.get(nameUser).getMsgView().setVisible(true);
+        controller.getUserPan().get(nameUser).getMsgView().setVisible(true);
         Thread.sleep(2000);
     }
 
