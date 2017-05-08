@@ -5,6 +5,7 @@ import network.*;
 import view.*;
 import view.Message;
 
+import javax.swing.*;
 import java.io.File;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -78,6 +79,7 @@ public class Controller implements Facade{
     }
 
     public void deliverMessage(network.Message msg) throws URISyntaxException {
+        if(userChat.get(msg.getSrcPseudo()).getClosed())userPan.get(msg.getSrcPseudo()).changeButton();
         userChat.get(msg.getSrcPseudo()).addMessage(msg.getData(), msg.getSrcPseudo());
     }
 
@@ -106,5 +108,9 @@ public class Controller implements Facade{
 
     public void sendFileToUser(File file, String pseudo) {
         network.getSocket(pseudo).sendFile(file, pseudo);
+    }
+
+    public void stopCligno(JButton j){
+        j.setBackground(new JButton().getBackground());
     }
 }

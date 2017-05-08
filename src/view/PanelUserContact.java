@@ -1,5 +1,6 @@
 package view;
 
+import controller.Controller;
 import model.Utilisateur;
 
 import javax.swing.*;
@@ -31,10 +32,20 @@ public class PanelUserContact extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 msgView.setVisible(true);
+                Controller.getController().stopCligno(discuter);
             }
         });
 
         this.add(name);
         this.add(discuter);
     }
+
+
+    public void changeButton(){
+        this.discuter.setBackground(new Color(255,153,0));
+        System.out.println("lol");
+    }
+
+
 }
+

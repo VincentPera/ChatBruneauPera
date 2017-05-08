@@ -42,7 +42,7 @@ public enum typeAudio {
     }
 
     private void notifAud() throws URISyntaxException {
-        URL u = getClass().getResource("/resources/notif.wav");
+        URL u = getClass().getResource("/resources/AH.wav");
         Media hit = new Media(u.toURI().toString());
         JFXPanel j = new JFXPanel();
         m = new MediaPlayer(hit);

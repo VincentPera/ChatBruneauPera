@@ -37,8 +37,8 @@ public class Contacts extends Fenetre {
             title.setHorizontalAlignment(SwingConstants.CENTER);
             panel.add(title,BorderLayout.NORTH);
 
-            Utilisateur user = Controller.getController().getModel().getUtilActu();
-            addNewUser(user);
+            /*Utilisateur user = Controller.getController().getModel().getUtilActu();
+            addNewUser(user);*/
 
             this.add(panel);
             this.setResizable(false);
