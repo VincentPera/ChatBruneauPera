@@ -20,6 +20,7 @@ public class ControllerTest {
     public void test1Connect() throws Exception {
         Thread.sleep(1000);
         controller.connect(nameUser);
+        controller.addUser(nameUser, InetAddress.getLocalHost());// on s'ajoute à la liste des utilisateurs
         Thread.sleep(2000);
     }
 
@@ -36,7 +37,7 @@ public class ControllerTest {
 
     @org.junit.Test
     public void test4DeliverMessage() throws Exception {
-        network.Message m = new network.Message(Text, "coucou", dest, nameUser);
+        network.Message m = new network.Message(Text, "coucou", nameUser, nameUser);
         controller.deliverMessage(m);
         Thread.sleep(500);
         controller.getUserPan().get(nameUser).getMsgView().setVisible(true);

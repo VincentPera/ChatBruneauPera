@@ -47,7 +47,6 @@ public class PanelUserContact extends JPanel{
 
     public void changeButton(){
         this.discuter.setBackground(new Color(255,153,0));
-        System.out.println("lol");
     }
 
 

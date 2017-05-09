@@ -32,7 +32,7 @@ Pour choisir l'ordre d'execution des tests nous avons ajouter l'annotation:
 
 test1Connect:
 Connecte un utilisateur pour s'assurer que la fenetre affichant les contacts
-se lance et que le son de connection c'est bien exécuté.
+se lance et que le son de connection s'est bien exécuté.
 Notre programme passe le test.
 
 test2AddUser:
@@ -46,7 +46,7 @@ Notre programme passe le test.
 test4DeliverMessage:
 Simule l'envoie d'un message pour controler qu'il s'affiche bien dans la boite
 de dialogue.
-Notre programme ne passe pas le test : absence du peroquet lors du test.
+Notre programme passe le test.
 
 test5Disconnect:
 Verifie que l'on envoie un message contenant"bye" lorsque l'on se deconnecte.
